@@ -32,9 +32,3 @@ jobs:
     - name: Build project
       run: npm run build
       
-    - name: Send WhatsApp notification on failure
-      if: failure()
-      uses: kaviadigdarshan/whatsapp-actions@main
-      with:
-        number: "8085121735"
-        message: "❌ Build failed for ${{ github.repository }}! Check the logs at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
