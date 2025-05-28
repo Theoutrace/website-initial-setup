@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   pageLoading: false,
-  pageLoaderText: '',
+  pageLoaderText: 'Loading...',
   modalLoading: false,
   authLoading: false
 };
