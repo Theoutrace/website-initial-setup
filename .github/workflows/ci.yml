@@ -24,6 +24,10 @@ jobs:
 
     - name: Check formatting
       run: |
+        npx prettier --write .
+
+    - name: Check formatting
+      run: |
         npx prettier --check .
 
     - name: Run ESLint
