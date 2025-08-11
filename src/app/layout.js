@@ -3,6 +3,8 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import StoreProvider from '@/utils/store/StoreProvider';
 import Header from '@/components/layout/Header';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import PageLoader from '@/components/PageLoader';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -33,8 +35,11 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <Header />
-            {children}
+            <ErrorBoundary>
+              <Header />
+              <PageLoader />
+              {children}
+            </ErrorBoundary>
           </ThemeProvider>
         </StoreProvider>
       </body>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { METHOD_TYPES } from "../data/constants";
-import { updatePageState } from "../store/slices/pageSlice";
+import { updatePageState } from "../store/slices/pageSlice/pageSlice";
 
 const getHeaders = (contentType, token) => {
   let headers = { "Content-Type": contentType };
@@ -21,7 +21,7 @@ export const fetchDataAndProceedWithToolkit = async (
     loaderText = "loading",
     contentType = "application/json",
     responseType,
-    baseURL = process.env.REACT_APP_BASE_URL,
+    baseURL = process.env.NEXT_PUBLIC_BASE_URL,
     axiosArgs = {},
   },
   { rejectWithValue, getState, dispatch }
@@ -41,7 +41,7 @@ export const fetchDataAndProceedWithToolkit = async (
       method,
       timeout,
       responseType,
-      headers: getHeaders(contentType, getState().authDetails.token),
+      headers: getHeaders(contentType, getState().auth?.token),
       params: method === METHOD_TYPES.GET ? data : {},
       data: method !== METHOD_TYPES.GET ? data : {},
       validateStatus: (status) =>
